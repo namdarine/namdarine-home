@@ -2,11 +2,12 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<footer class="my-20 text-center text-sm text-slate-500 space-y-2">
+<footer class="my-20 px-4 text-center text-sm text-slate-500 space-y-4">
   <p>
     © {new Date().getFullYear()} Namdarine. All rights reserved.
   </p>
-  <p class="text-xs">
+
+  <p class="text-xs sm:text-sm text-slate-400">
     Built with ✦ Astro & Tailwind. Theme by 
     <a
       href="https://web3templates.com"
@@ -19,7 +20,7 @@ import { Icon } from "astro-icon/components";
   </p>
 
   <!-- SNS Links with Icons and Bigger Text -->
-  <div class="flex justify-center space-x-6 text-base text-slate-600 mt-4 font-medium">
+  <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-base text-slate-600 mt-4 font-medium">
     <a href="https://github.com/namdarine" class="flex items-center space-x-2 hover:text-black transition" target="_blank">
       <Icon name="mdi:github" class="w-5 h-5" />
       <span>GitHub</span>
