@@ -16,30 +16,53 @@ const templates = await getCollection("templates");
       </Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-2 gap-10 mt-12">
+    <section class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3 mt-12">
       {templates.map((template) => (
         <a
           href={`/templates/${template.slug}`}
-          class="block hover:shadow-md transition rounded-xl p-4 border border-slate-200 bg-white"
+          class="group block rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md transition relative"
         >
-          <img
-            src={template.data.thumbnail}
-            alt={template.data.title}
-            class="rounded-md mb-4 w-full h-48 object-cover"
-          />
-          <h3 class="text-xl font-semibold text-slate-800">
+          <!-- Category Tag -->
+          {template.data.category && (
+            <span class="absolute top-4 left-4 bg-indigo-100 text-indigo-700 text-xs font-semibold px-2 py-0.5 rounded-full">
+              {template.data.category}
+            </span>
+          )}
+
+          <!-- Coming Soon Badge -->
+          {template.data.comingSoon && (
+            <span class="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full">
+              Coming Soon
+            </span>
+          )}
+
+          <!-- Status Badge (bottom right corner) -->
+          {template.data.status && (
+            <span class="absolute bottom-4 right-4 bg-slate-100 text-slate-700 text-[10px] font-medium px-2 py-0.5 rounded-full">
+              {template.data.status === 'free' && 'Free'}
+              {template.data.status === 'pro' && 'Pro'}
+              {template.data.status === 'beta' && 'Beta'}
+            </span>
+          )}
+
+          <div class="aspect-video overflow-hidden rounded-md bg-slate-100">
+            <img
+              src={template.data.thumbnail}
+              alt={template.data.title}
+              class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+          </div>
+          <h3 class="mt-4 text-xl font-semibold text-slate-800 tracking-tight">
             {template.data.title}
           </h3>
-          <p class="text-sm text-slate-500 mt-2">
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">
             {template.data.description || 'A no-code AI template from Namdarine.'}
           </p>
-          <div class="mt-4">
-            <span class="text-indigo-600 text-sm font-medium">
-              View Template →
-            </span>
+          <div class="mt-4 text-indigo-600 text-sm font-medium group-hover:underline">
+            View Template →
           </div>
         </a>
       ))}
-    </div>
+    </section>
   </Container>
 </Layout>
