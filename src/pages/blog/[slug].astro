@@ -20,17 +20,17 @@ const { Content } = await entry.render();
 <Layout title={entry.data.title}>
   <Container>
     <article class="mx-auto max-w-3xl mt-16 px-4 sm:px-6">
-      <!-- 카테고리 -->
+      <!-- Category -->
       <span class="text-indigo-600 uppercase tracking-wide text-sm font-semibold">
         {entry.data.category}
       </span>
 
-      <!-- 제목 -->
+      <!-- Title -->
       <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-800 sm:text-5xl">
         {entry.data.title}
       </h1>
 
-      <!-- 메타 정보 -->
+      <!-- Meta Information -->
       <div class="mt-4 flex flex-wrap items-center gap-x-3 text-sm text-gray-500">
         <span>{entry.data.author}</span>
         <span>•</span>
@@ -53,12 +53,12 @@ const { Content } = await entry.render();
         }
       </div>
 
-      <!-- 본문 -->
+      <!-- Body -->
       <div class="prose prose-slate prose-lg dark:prose-invert mt-10 max-w-none">
         <Content />
       </div>
 
-      <!-- 뒤로가기 -->
+      <!-- Back to Blog -->
       <div class="text-center mt-12">
         <a
           href="/blog"
