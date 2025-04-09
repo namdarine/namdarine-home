@@ -39,7 +39,7 @@ const templates = await getCollection("templates");
           <!-- Status Badge (bottom right corner) -->
           {template.data.status && (
             <span class="absolute bottom-4 right-4 bg-slate-100 text-slate-700 text-[10px] font-medium px-2 py-0.5 rounded-full">
-              {template.data.status === 'free' && 'Free'}
+              {template.data.status === 'standard' && 'Standard'}
               {template.data.status === 'pro' && 'Pro'}
               {template.data.status === 'beta' && 'Beta'}
             </span>
