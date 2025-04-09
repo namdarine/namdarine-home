@@ -1,53 +1,61 @@
 ---
 import { Picture } from "astro:assets";
 import heroImage from "@/assets/hero.png";
+import whatIsImage from "@/assets/what_is_namdarine.png";
 import Link from "@/components/ui/link.astro";
+import Cta from "@/components/cta.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
-      </Link>
+<main class="pt-16 pb-24 space-y-24">
+  <!-- Hero Section with Static Image -->
+  <section class="grid lg:grid-cols-2 place-items-center gap-8">
+    <!-- Text Area -->
+    <div>
+      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-slate-800">
+        Let's build it like it's already happened.
+      </h1>
+      <p class="text-lg mt-6 text-slate-600 max-w-xl">
+        Namdarine is building a world where anyone can create AI without code.
+        From automated ML workflows to visual templates, we're making AI more accessible — modular, intuitive, and powerful.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <Link href="#" class="flex gap-2 items-center justify-center pointer-events-none opacity-50">
+          <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
+          Coming Soon
+        </Link>
+        <Link href="/about" size="lg" style="outline" class="flex gap-2 items-center justify-center">
+          <Icon class="text-black w-4 h-4" name="bx:bx-book-heart" />
+          Learn the Philosophy
+        </Link>
+      </div>
     </div>
-  </div>
+
+    <!-- Static Hero Image (replaceable with Rive later) -->
+    <div class="py-6">
+      <Picture
+        src={heroImage}
+        alt="Modular AI illustration"
+        widths={[300, 600, 900]}
+        sizes="(max-width: 800px) 100vw, 600px"
+        class="mx-auto max-w-md rounded-xl shadow-sm"
+      />
+    </div>
+  </section>
+
+  <!-- What is Namdarine Image -->
+  <section>
+    <h2 class="text-center text-2xl font-semibold text-slate-700 mb-6">
+      What is Namdarine?
+    </h2>
+    <Picture
+      src={whatIsImage}
+      alt="What is Namdarine?"
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, 800px"
+      class="mx-auto w-full max-w-4xl rounded-xl shadow-sm"
+    />
+  </section>
+
+  <Cta />
 </main>

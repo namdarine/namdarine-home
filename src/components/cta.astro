@@ -2,16 +2,21 @@
 import Link from "./ui/link.astro";
 ---
 
-<div
-  class="bg-black p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center">
-  <h2 class="text-white text-4xl md:text-6xl tracking-tight">
-    Build faster websites.
+<section class="bg-black p-10 mt-24 text-center text-white rounded-lg max-w-4xl mx-auto">
+  <h2 class="text-3xl md:text-4xl font-bold">
+    Build Your Own AI — No Code, Just Clicks.
   </h2>
-  <p class="text-slate-400 mt-4 text-lg md:text-xl">
-    Pull content from anywhere and serve it fast with Astro's next-gen island
-    architecture.
+  <p class="mt-4 text-slate-400 text-lg">
+    Start with modular templates and visual workflows to build custom AI that works for you.
   </p>
-  <div class="flex mt-5">
-    <Link href="#" style="inverted">Get Started</Link>
+  <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+    <Link href="/templates" style="inverted">Explore Templates</Link>
+    <a
+      href="#"
+      class="inline-block bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold opacity-50 pointer-events-none"
+    >
+      View White Paper (Coming Soon)
+    </a>
+    <Link href="/about" style="outline">Read the Brand Story</Link>
   </div>
-</div>
+</section>

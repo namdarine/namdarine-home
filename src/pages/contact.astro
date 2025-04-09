@@ -1,5 +1,4 @@
 ---
-import Contactform from "@/components/contactform.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import Layout from "@/layouts/Layout.astro";
@@ -7,38 +6,54 @@ import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Contact">
+  <!-- Calendly link widget begin -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- Calendly link widget end -->
+
   <Container>
     <Sectionhead>
       <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+      <Fragment slot="desc">Let’s connect — I’d love to hear from you.</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
-        <h2 class="font-medium text-2xl text-gray-800">Contact Astroship</h2>
+        <h2 class="font-medium text-2xl text-gray-800">Reach out to Namdarine</h2>
         <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Have something to say? We are here to help. Fill up the form or send
-          email or call phone.
+          Whether it's about templates, ideas, collaborations, or just saying hi — feel free to get in touch anytime.
         </p>
-        <div class="mt-5">
-          <div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>1734 Sanfransico, CA 93063</span>
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:hello@astroshipstarter.com"
-              >hello@astroshipstarter.com</a
-            >
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /><a
-              href="tel:+1 (987) 4587 899">+1 (987) 4587 899</a
-            >
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" />
+            <a href="mailto:namdarine@gmail.com" class="hover:underline">namdarine@gmail.com</a>
+          </div>
+          <div class="flex items-center space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="ri:linkedin-fill" />
+            <a href="https://www.linkedin.com/in/nam-gyu-lee/" class="hover:underline">Connect on LinkedIn</a>
+          </div>
+          <div class="flex items-center space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="ri:medium-fill" />
+            <a href="https://medium.com/@namdarine" class="hover:underline">Read on Medium</a>
           </div>
         </div>
+
+        <!-- Calendly popup text button -->
+        <div class="mt-8">
+          <a
+            href=""
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/namdarine'});return false;"
+            class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-indigo-700"
+          >
+            ☕ Book a Coffee Chat
+          </a>
+        </div>
       </div>
-      <div>
+      
+      <!-- Temporary disabled: Web3Forms not in use --> 
+      <!-- <div>
         <Contactform />
-      </div>
+      </div> -->
     </div>
   </Container>
 </Layout>

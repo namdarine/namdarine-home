@@ -1,57 +1,71 @@
 ---
-import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+import profilePic from "@/assets/profile_pic.png";
 ---
 
 <Layout title="About">
   <Container>
+    <!-- Top Subject Section -->
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">About Namdarine</Fragment>
+      <Fragment slot="desc">Modular AI for Everyone — No Code, Just Intuition.</Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
-      </p>
+    <!-- Profile picture -->
+    <div class="mx-auto mt-12 w-40 h-40">
+      <Picture
+        src={profilePic}
+        alt="Namdarine Creator Avatar"
+        widths={[160, 320]}
+        sizes="(max-width: 640px) 100vw, 160px"
+        class="rounded-full mx-auto shadow-md object-cover"
+      />
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-sm transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
-          </div>
-        ))
-      }
+    <!-- Brand Philosophy section -->
+    <div class="flex flex-col gap-5 mx-auto max-w-3xl mt-12 text-center">
+      <h2 class="font-bold text-3xl text-slate-800">
+        We believe that building AI should be as simple as assembling LEGO blocks — no code, just intuition.
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        The mission behind Namdarine is to democratize AI through modularity,
+        visual workflows, and human-first design.
+      </p>
+      <p class="text-base text-slate-500 italic">
+        Namdarine is both a person and a platform.  
+        It started as a solo journey — now it's becoming a toolkit for others to build their own AI, without writing code.
+      </p>
+
+      <!-- Mini Whitepaper CTA -->
+      <div class="mt-8">
+        <a
+          href="#"
+          class="inline-block bg-slate-800 text-white px-6 py-3 rounded-lg text-sm font-semibold opacity-50 pointer-events-none"
+        >
+          View Mini White Paper (Coming Soon)
+        </a>
+      </div>
+    </div>
+
+    <!-- Founder Note section -->
+    <div class="mt-16 text-left max-w-3xl mx-auto">
+      <h3 class="text-lg font-bold text-slate-800 mb-2">Founder’s Note</h3>
+      <p class="text-slate-600 leading-relaxed text-md">
+        I didn't start out in AI. But as I explored how technology could shape the future, I found myself drawn to the power of artificial intelligence — not just as a tool, but as a language for ideas.  
+        <br /><br />
+        I eventually shifted my major to AI, not because I wanted to write algorithms all day, but because I wanted to build systems that could understand people — not just data.  
+        And what I saw was this: most people are left out of AI because they can't code.
+        <br /><br />
+        That's why I started Namdarine — to make AI creation accessible to anyone.  
+        No technical barrier. No gatekeeping. Just building, learning, and experimenting — as naturally as putting together LEGO blocks.
+        <br /><br />
+        Namdarine is my vision for a more inclusive future — where AI is not just for developers, but for dreamers, thinkers, and creators everywhere.
+        <br /><br />
+        <strong class="text-slate-700">Namdarine is not a product. It’s a belief — that AI belongs to everyone.</strong>
+      </p>
     </div>
   </Container>
 </Layout>
