@@ -1,3 +1,7 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <footer class="my-20 text-center text-sm text-slate-500 space-y-2">
   <p>
     © {new Date().getFullYear()} Namdarine. All rights reserved.
@@ -14,13 +18,15 @@
     </a>
   </p>
 
-  <!-- SNS Links: Size Kiwoom + iKON can be added if you want -->
-  <div class="flex justify-center space-x-6 text-sm text-slate-600 mt-3 font-medium">
-    <a href="https://github.com/namdarine" class="hover:text-black transition" target="_blank">
-      GitHub
+  <!-- SNS Links with Icons and Bigger Text -->
+  <div class="flex justify-center space-x-6 text-base text-slate-600 mt-4 font-medium">
+    <a href="https://github.com/namdarine" class="flex items-center space-x-2 hover:text-black transition" target="_blank">
+      <Icon name="mdi:github" class="w-5 h-5" />
+      <span>GitHub</span>
     </a>
-    <a href="https://medium.com/@namdarine" class="hover:text-black transition" target="_blank">
-      Medium
+    <a href="https://medium.com/@namdarine" class="flex items-center space-x-2 hover:text-black transition" target="_blank">
+      <Icon name="ri:medium-fill" class="w-5 h-5" />
+      <span>Medium</span>
     </a>
   </div>
 </footer>
