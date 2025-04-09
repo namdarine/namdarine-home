@@ -6,13 +6,14 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://namdarine.com", // 나중에 네 도메인으로 바꿔도 됨
+  site: "https://namdarine.com",
   integrations: [
     mdx(),
     sitemap(),
     icon({
       collections: {
-        ri: () => import("@iconify-json/ri/icons.json"), // ← 여기 추가!
+        mdi: () => import('@iconify-json/mdi/icons.json'),
+        ri: () => import("@iconify-json/ri/icons.json"),
       },
     }),
   ],
