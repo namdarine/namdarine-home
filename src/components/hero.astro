@@ -7,24 +7,24 @@ import Cta from "@/components/cta.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main class="pt-16 pb-24 space-y-24">
+<main class="pt-12 sm:pt-16 pb-16 sm:pb-24 space-y-16 sm:space-y-24">
   <!-- Hero Section with Static Image -->
-  <section class="grid lg:grid-cols-2 place-items-center gap-8">
+  <section class="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-8 px-4 sm:px-6">
     <!-- Text Area -->
     <div>
-      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-slate-800">
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-slate-800 leading-tight">
         Let's build it like it's already happened.
       </h1>
-      <p class="text-lg mt-6 text-slate-600 max-w-xl">
+      <p class="text-base sm:text-lg mt-6 text-slate-600 max-w-xl leading-relaxed">
         Namdarine is building a world where anyone can create AI without code.
         From automated ML workflows to visual templates, we're making AI more accessible — modular, intuitive, and powerful.
       </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <Link href="#" class="flex gap-2 items-center justify-center pointer-events-none opacity-50">
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <Link href="#" class="flex gap-2 items-center justify-center pointer-events-none opacity-50 text-sm sm:text-base">
           <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
           Coming Soon
         </Link>
-        <Link href="/about" size="lg" style="outline" class="flex gap-2 items-center justify-center">
+        <Link href="/about" size="lg" style="outline" class="flex gap-2 items-center justify-center text-sm sm:text-base">
           <Icon class="text-black w-4 h-4" name="bx:bx-book-heart" />
           Learn the Philosophy
         </Link>
@@ -32,20 +32,20 @@ import { Icon } from "astro-icon/components";
     </div>
 
     <!-- Static Hero Image (replaceable with Rive later) -->
-    <div class="py-6">
+    <div class="py-4 sm:py-6">
       <Picture
         src={heroImage}
         alt="Modular AI illustration"
         widths={[300, 600, 900]}
-        sizes="(max-width: 800px) 100vw, 600px"
-        class="mx-auto max-w-md rounded-xl shadow-sm"
+        sizes="(max-width: 768px) 100vw, 600px"
+        class="mx-auto w-full max-w-xs sm:max-w-md rounded-xl shadow-sm"
       />
     </div>
   </section>
 
   <!-- What is Namdarine Image -->
-  <section>
-    <h2 class="text-center text-2xl font-semibold text-slate-700 mb-6">
+  <section class="px-4 sm:px-6">
+    <h2 class="text-center text-xl sm:text-2xl font-semibold text-slate-700 mb-6">
       What is Namdarine?
     </h2>
     <Picture
@@ -53,9 +53,7 @@ import { Icon } from "astro-icon/components";
       alt="What is Namdarine?"
       widths={[400, 800, 1200]}
       sizes="(max-width: 768px) 100vw, 800px"
-      class="mx-auto w-full max-w-4xl rounded-xl shadow-sm"
+      class="mx-auto w-full max-w-2xl sm:max-w-4xl rounded-xl shadow-sm"
     />
   </section>
-
-  <!-- <Cta /> -->
 </main>

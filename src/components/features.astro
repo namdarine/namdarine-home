@@ -36,25 +36,28 @@ const features = [
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+<div class="mt-16 md:mt-0 text-center md:text-left px-4">
+  <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold lg:tracking-tight">
     AI Without Code — Reimagined for Everyone
   </h2>
-  <p class="text-lg mt-4 text-slate-600 max-w-2xl">
+  <p class="text-base sm:text-lg mt-4 text-slate-600 max-w-2xl mx-auto md:mx-0">
     Namdarine gives you modular tools, visual workflows, and total control — all without writing a single line of code.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<!-- Reactive grid: 1 column on sm, 2 columns from md, 3 columns above lg -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12 gap-10 px-4">
   {
     features.map((item) => (
       <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+        <div class="mt-1 bg-black rounded-full p-2 w-9 h-9 flex items-center justify-center shrink-0">
+          <Icon class="text-white w-5 h-5" name={item.icon} />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          <h3 class="font-semibold text-base sm:text-lg">{item.title}</h3>
+          <p class="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed">
+            {item.description}
+          </p>
         </div>
       </div>
     ))
