@@ -30,19 +30,22 @@ const templates = await getCollection("templates");
           )}
 
           <!-- Coming Soon Badge -->
-          {String(template.data.comingSoon) === "true" && (
-            <span class="absolute top-4 right-4 bg-yellow-100 text-yellow-800 text-xs font-semibold px-2 py-0.5 rounded-full">
-              Coming Soon
-            </span>
-          )}
-
-          <!-- Status Badge (bottom right corner) -->
-          {template.data.status && (
-            <span class="absolute bottom-4 right-4 bg-slate-100 text-slate-700 text-[10px] font-medium px-2 py-0.5 rounded-full">
-              {template.data.status === 'standard' && 'Standard'}
-              {template.data.status === 'pro' && 'Pro'}
-              {template.data.status === 'beta' && 'Beta'}
-            </span>
+          {(template.data.status || template.data.comingSoon) && (
+            <div class="absolute bottom-4 right-4 flex gap-2">
+              {template.data.comingSoon?.toString() === "true" && (
+                <span class="bg-yellow-100 text-yellow-800 text-[10px] font-medium px-2 py-0.5 rounded-full">
+                  Coming Soon
+                </span>
+              )}
+              <!-- Status -->
+              {template.data.status && (
+                <span class="bg-slate-100 text-slate-700 text-[10px] font-medium px-2 py-0.5 rounded-full">
+                  {template.data.status === 'standard' && 'Standard'}
+                  {template.data.status === 'pro' && 'Pro'}
+                  {template.data.status === 'beta' && 'Beta'}
+                </span>
+              )}
+            </div>
           )}
 
           <div class="aspect-video overflow-hidden rounded-md bg-slate-100">
