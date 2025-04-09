@@ -6,8 +6,16 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
-  integrations: [mdx(), sitemap(), icon()],
+  site: "https://namdarine.com", // 나중에 네 도메인으로 바꿔도 됨
+  integrations: [
+    mdx(),
+    sitemap(),
+    icon({
+      collections: {
+        ri: () => import("@iconify-json/ri/icons.json"), // ← 여기 추가!
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
