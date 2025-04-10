@@ -92,14 +92,14 @@ const features = [
   <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold lg:tracking-tight">
     {lang === "ko" ? "AI는 어렵지 않아야 합니다 - namdarine의 기준입니다" : "AI Without Code — Reimagined for Everyone"}
   </h2>
-  <p class="text-base sm:text-lg mt-4 text-slate-600 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+  <p class="text-base sm:text-lg mt-4 text-slate-600 max-w-2xl mx-auto md:mx-0 leading-relaxed"
     set:html={
       lang === "ko"
         ? `namdarine은 도구가 아닙니다. 가능성입니다. <br />
           블록을 조립하고, 결을 따라 연결하세요. <br />
           복잡한 코드는 더 이상 필요하지 않습니다.`
         : "Namdarine gives you modular tools, visual workflows, and total control — all without writing a single line of code."}
-  </p>
+  />
 </div>
 
 <!-- Feature cards -->
@@ -112,9 +112,9 @@ const features = [
         </div>
         <div>
           <h3 class="font-semibold text-base sm:text-lg">{item.title[lang]}</h3>
-          <p class="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed">
+          <p class="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed"
             set:html={item.description[lang]}
-          </p>
+          />
         </div>
       </div>
     ))
