@@ -33,23 +33,28 @@ const menuitems = [
 ---
 
 <Container>
-  <header class="flex flex-col lg:flex-row justify-between items-center py-4">
-    <!-- Left: Logo & Mobile Menu Icon -->
-    <div class="flex w-full lg:w-auto justify-between items-center">
+  <header class="flex justify-between items-center py-4">
+    <!-- Left: Logo -->
+    <div class="flex items-center gap-4">
       <a href="/" class="text-xl font-bold text-slate-800">
         <span class="text-black">nam</span><span class="text-slate-500">darine</span>
       </a>
-      <button
-        id="mobile-toggle"
-        class="lg:hidden text-gray-800"
-        aria-label="Toggle Menu"
-      >
+    </div>
+
+    <!-- Right: mobile menu icon + language change -->
+    <div class="flex items-center gap-3 lg:hidden">
+      <!-- Language button -->
+      <a href={lang === "ko" ? "/" : "/ko"} class="text-sm text-gray-600 hover:text-black transition">
+        <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
+      </a>
+      <!-- Mobile Menu button -->
+      <button id="mobile-toggle" class="text-gray-800" aria-label="Toggle Menu">
         <Icon name="mdi:menu" class="w-6 h-6" />
       </button>
     </div>
 
-    <!-- Right: Menu Items -->
-    <nav id="mobile-menu" class="hidden w-full lg:flex lg:w-auto mt-4 lg:mt-0 flex-col lg:flex-row lg:items-center">
+    <!-- Menu -->
+    <nav id="mobile-menu" class="hidden w-full lg:flex lg:w-auto mt-4 lg:mt-0">
       <ul class="flex flex-col lg:flex-row lg:gap-4 text-base text-slate-600 font-medium">
         {
           menuitems.map((item) => (
@@ -65,16 +70,13 @@ const menuitems = [
           ))
         }
       </ul>
-
-      <!-- Language Switcher -->
-      <div class="mt-4 lg:mt-0 lg:ml-4 flex justify-center">
-        <a
-          href={lang === "ko" ? Astro.url.pathname.replace(/^\/ko/, "") : `/ko${Astro.url.pathname}`}
-          class="flex items-center gap-2 text-sm text-slate-600 hover:text-black border border-slate-200 px-3 py-1.5 rounded-full shadow-sm"
-        >
-          {lang === "ko" ? "🇺🇸 English" : "🇰🇷 한국어"}
-        </a>
-      </div>
     </nav>
+
+    <!-- Desktop-only language buttons -->
+    <div class="hidden lg:block ml-6">
+      <a href={lang === "ko" ? "/" : "/ko"} class="text-sm text-gray-600 hover:text-black transition">
+        <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
+      </a>
+    </div>
   </header>
 </Container>
