@@ -8,6 +8,7 @@ import "../styles/global.css";
 
 export interface Props {
   title: string;
+  lang?: "en" | "ko"
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -17,7 +18,7 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+const { title, lang = "en" } = Astro.props;
 
 const makeTitle = title
   ? title + " | " + "namdarine"
@@ -25,7 +26,7 @@ const makeTitle = title
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -64,7 +65,7 @@ const makeTitle = title
     />
   </head>
   <body>
-    <Navbar />
+    <Navbar lang={lang} />
     <slot />
     <Footer />
     <style is:global>

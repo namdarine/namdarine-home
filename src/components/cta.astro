@@ -1,22 +1,31 @@
 ---
 import Link from "./ui/link.astro";
+
+const { lang = "en" } = Astro.props;
 ---
 
 <section class="bg-black p-10 mt-24 text-center text-white rounded-lg max-w-4xl mx-auto">
   <h2 class="text-3xl md:text-4xl font-bold">
-    Build Your Own AI — No Code, Just Clicks.
+    {lang === "ko" ? "클릭 몇 번이면, AI가 나만의 것이 됩니다" : "Build Your Own AI — Just Click, No Code"}
   </h2>
+
   <p class="mt-4 text-slate-400 text-lg">
-    Start with modular templates and visual workflows to build custom AI that works for you.
+    {lang === "ko"
+      ? "블록을 조립하고, 결을 따라 흐르세요. 복잡한 건 우리가 덜어냈습니다."
+      : "Snap the blocks together and follow the grain. We've smoothed out the complexity for you."}
   </p>
   <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-    <Link href="/templates" style="inverted">Explore Templates</Link>
+    <Link href={lang === "ko" ? "/ko/templates" : "/templates"} style="inverted">
+      {lang === "ko" ? "AI 만들기 시작하기" : "Start Building AI"}
+    </Link>
     <a
       href="#"
       class="inline-block bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold opacity-50 pointer-events-none"
     >
-      View White Paper (Coming Soon)
+      {lang === "ko" ? "철학을 글로 담았습니다. (곧 공개)" : "Our Philosophy, in Writing (Coming Soon)"}
     </a>
-    <Link href="/about" style="outline">Read the Brand Story</Link>
+    <Link href={lang === "ko" ? "/ko/about" : "/about"} style="outline">
+      {lang === "ko" ? "브랜드의 결, 지금 읽기" : "Read the Brand Grain"}
+    </Link>
   </div>
 </section>

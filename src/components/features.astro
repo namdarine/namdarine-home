@@ -11,9 +11,9 @@ const features = [
       ko: "코드는 잊고, 가능성에 집중하세요",
     },
     description: {
-      en: `Click, choose, and begin. <br \>
+      en: `Click, choose, and begin. <br />
           Your AI starts where your hands move - faster than you imagined.`,
-      ko: `클릭하고, 고르고, 바로 만들어보세요. <br \>
+      ko: `클릭하고, 고르고, 바로 만들어보세요. <br />
           생각보다 훨씬 빠르게, AI가 여러분의 손끝에서 시작됩니다.`,
     },
     icon: "bx:bxs-magic-wand",
@@ -24,9 +24,9 @@ const features = [
       ko: "블록처럼, 내 마음대로",
     },
     description: {
-      en: `Pick the pieces, snap them together. <br \>
+      en: `Pick the pieces, snap them together. <br />
           Our templates turn your thoughts into working flows.`,
-      ko: `필요한 기능을 고르고 맞추기만 하면 됩니다. <br \>
+      ko: `필요한 기능을 고르고 맞추기만 하면 됩니다. <br />
           준비된 템플릿은 여러분의 상상을 구체화하는 출발점이 됩니다.`,
     },
     icon: "bx:bxs-component",
@@ -37,9 +37,9 @@ const features = [
       ko: "사람의 언어로 만든 인터페이스",
     },
     description: {
-      en: `No jargon, no confusion. <br \>
+      en: `No jargon, no confusion. <br />
           Designed for instinct, not instruction manuals.`,
-      ko: `복잡한 용어 없이도 누구나 감으로 이해할 수 있습니다. <br \>
+      ko: `복잡한 용어 없이도 누구나 감으로 이해할 수 있습니다. <br />
           기술보다 사람이 먼저인 설계입니다.`,
     },
     icon: "bx:bxs-user",
@@ -50,10 +50,10 @@ const features = [
       ko: "눈에 보이는 AI",
     },
     description: {
-      en: `Drag, drop, and watch your AI come alive. <br \>
+      en: `Drag, drop, and watch your AI come alive. <br />
           What you see is what you make - in real time.`,
-      ko: `드래그하고 놓는 순간, <br \>
-          AI의 구조가 하나씩 살아 움직입니다. <br \>
+      ko: `드래그하고 놓는 순간, <br />
+          AI의 구조가 하나씩 살아 움직입니다. <br />
           머릿속 그림이 그대로 펼쳐집니다.`,
     },
     icon: "bx:bxs-dashboard",
@@ -64,9 +64,9 @@ const features = [
       ko: "모든 입력에 반응하는 감각",
     },
     description: {
-      en: `Text, files, voice - whatever your input, <br \>
+      en: `Text, files, voice - whatever your input, <br />
           namdarine feels, adapts, and flows with you.`,
-      ko: `텍스트, 파일, 오디오까지 — <br \>
+      ko: `텍스트, 파일, 오디오까지 — <br />
             어떤 형태든 자연스럽게 연결되고, 유기적으로 작동합니다.`,
     },
     icon: "bx:bxs-microphone",
@@ -77,9 +77,9 @@ const features = [
       ko: "데이터는 당신의 것",
     },
     description: {
-      en: `No tracking. No sending. <br \>
+      en: `No tracking. No sending. <br />
           Everything stays local - fully yours, fully private.`,
-      ko: `namdarine은 추적하지 않습니다. <br \>
+      ko: `namdarine은 추적하지 않습니다. <br />
             어디에도 보내지 않고, 오직 여러분의 손 안에만 남습니다.`,
     },
     icon: "bx:bxs-lock-alt",
@@ -93,11 +93,12 @@ const features = [
     {lang === "ko" ? "AI는 어렵지 않아야 합니다 - namdarine의 기준입니다" : "AI Without Code — Reimagined for Everyone"}
   </h2>
   <p class="text-base sm:text-lg mt-4 text-slate-600 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-    {lang === "ko"
-      ? `namdarine은 도구가 아닙니다. 가능성입니다. <br \>
-        블록을 조립하고, 결을 따라 연결하세요. <br \>
-        복잡한 코드는 더 이상 필요하지 않습니다.`
-      : "Namdarine gives you modular tools, visual workflows, and total control — all without writing a single line of code."}
+    set:html={
+      lang === "ko"
+        ? `namdarine은 도구가 아닙니다. 가능성입니다. <br />
+          블록을 조립하고, 결을 따라 연결하세요. <br />
+          복잡한 코드는 더 이상 필요하지 않습니다.`
+        : "Namdarine gives you modular tools, visual workflows, and total control — all without writing a single line of code."}
   </p>
 </div>
 
@@ -112,7 +113,7 @@ const features = [
         <div>
           <h3 class="font-semibold text-base sm:text-lg">{item.title[lang]}</h3>
           <p class="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed">
-            {item.description[lang]}
+            set:html={item.description[lang]}
           </p>
         </div>
       </div>
