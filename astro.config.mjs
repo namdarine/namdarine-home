@@ -14,6 +14,7 @@ export default defineConfig({
       collections: {
         mdi: () => import('@iconify-json/mdi/icons.json'),
         ri: () => import("@iconify-json/ri/icons.json"),
+        "circle-flags": () => import("@iconify-json/circle-flags/icons.json"),
       },
     }),
   ],
