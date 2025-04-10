@@ -2,30 +2,34 @@
 import Container from "@/components/container.astro";
 import { Icon } from "astro-icon/components";
 
+export interface Props {
+  lang: "en" | "ko";
+}
+
+const { lang } = Astro.props;
+
 const menuitems = [
   {
-    title: "Templates",
-    path: "/templates",
+    title: lang === "ko" ? "템플릿" : "Templates",
+    path: lang === "ko" ? "/ko/templates" : "/templates",
     icon: "bx:grid-alt",
   },
   {
-    title: "Blog",
-    path: "/blog",
+    title: lang === "ko" ? "블로그" : "Blog",
+    path: lang === "ko" ? "/ko/blog" : "/blog",
     icon: "ri:book-line",
   },
   {
-    title: "About",
-    path: "/about",
+    title: lang === "ko" ? "소개" : "About",
+    path: lang === "ko" ? "/ko/about" : "/about",
     icon: "bx:user",
   },
   {
-    title: "Contact",
-    path: "/contact",
+    title: lang === "ko" ? "함께 만들기" : "Let’s Talk",
+    path: lang === "ko" ? "/ko/contact" : "/contact",
     icon: "ri:mail-line",
   }
 ];
-
-let isOpen = false;
 ---
 
 <Container>
@@ -36,19 +40,16 @@ let isOpen = false;
         <span class="text-black">nam</span><span class="text-slate-500">darine</span>
       </a>
       <button
+        id="mobile-toggle"
         class="lg:hidden text-gray-800"
         aria-label="Toggle Menu"
-        onclick={() => {
-          const menu = document.getElementById('mobile-menu');
-          menu.classList.toggle('hidden');
-        }}
       >
         <Icon name="mdi:menu" class="w-6 h-6" />
       </button>
     </div>
 
     <!-- Right: Menu Items -->
-    <nav id="mobile-menu" class="hidden w-full lg:flex lg:w-auto mt-4 lg:mt-0">
+    <nav id="mobile-menu" class="hidden w-full lg:flex lg:w-auto mt-4 lg:mt-0 flex-col lg:flex-row lg:items-center">
       <ul class="flex flex-col lg:flex-row lg:gap-4 text-base text-slate-600 font-medium">
         {
           menuitems.map((item) => (
@@ -64,6 +65,16 @@ let isOpen = false;
           ))
         }
       </ul>
+
+      <!-- Language Switcher -->
+      <div class="mt-4 lg:mt-0 lg:ml-4 flex justify-center">
+        <a
+          href={lang === "ko" ? Astro.url.pathname.replace(/^\/ko/, "") : `/ko${Astro.url.pathname}`}
+          class="flex items-center gap-2 text-sm text-slate-600 hover:text-black border border-slate-200 px-3 py-1.5 rounded-full shadow-sm"
+        >
+          {lang === "ko" ? "🇺🇸 English" : "🇰🇷 한국어"}
+        </a>
+      </div>
     </nav>
   </header>
 </Container>
