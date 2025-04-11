@@ -81,20 +81,20 @@ const langItems = [
 
       <!-- Mobile: Language + Hamburger -->
       <div class="flex gap-3 items-center lg:hidden">
-        <!-- 언어 전환 버튼 -->
+        <!-- Language transition button -->
         <button id="mobile-language" aria-label="language">
           <Icon name={lang === "ko" ? "circle-flags:kr" : "circle-flags:us"} class="w-6 h-6 text-gray-600 hover:text-black" />
         </button>
 
-        <!-- 햄버거 버튼 -->
+        <!-- Hamburger button -->
         <button id="mobile-toggle" aria-label="Toggle Menu">
           <Icon name="mdi:menu" class="w-6 h-6 text-gray-800" />
         </button>
       </div>
 
-      <!-- 모바일 메뉴 (초기엔 hidden) -->
-      <nav id="mobile-menu" class="hidden mt-4 lg:hidden">
-        <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium">
+      <!-- Mobile menu -->
+      <nav id="mobile-menu" class="hidden mt-4 lg:hidden w-full">
+        <ul class="flex flex-col text-base text-slate-600 font-medium p-4 space-y-2">
           {menuitems.map((item) => (
             <li>
               <a href={item.path} class="flex items-center gap-2 px-2 py-2 hover:text-black transition">
