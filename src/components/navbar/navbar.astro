@@ -1,7 +1,7 @@
 ---
 import Container from "@/components/container.astro";
-import MenuToggle from "@/components/navbar/menu-toggle.astro";
 import { Icon } from "astro-icon/components";
+import Dropdown from "@/components/navbar/dropdown.astro";
 
 export interface Props {
   lang: "en" | "ko";
@@ -31,6 +31,11 @@ const menuitems = [
     icon: "ri:mail-line",
   }
 ];
+
+const langItems = [
+  { title: "English", path: "/" },
+  { title: "한국어", path: "/ko" },
+];
 ---
 
 <Container>
@@ -44,7 +49,7 @@ const menuitems = [
       <!-- Desktop menu -->
       <div class="hidden lg:flex items-center gap-6">
         <nav>
-          <ul class="flex gap-4 text-base text-slate-600 font-medium">
+          <ul class="flex gap-4 text-base text-slate-600 font-medium items-center">
             {menuitems.map((item) => (
               <li>
                 <a href={item.path} class="flex items-center gap-2 hover:text-black transition">
@@ -53,84 +58,61 @@ const menuitems = [
                 </a>
               </li>
             ))}
+            <Dropdown title={lang === "ko" ? "한국어" : "English"} lastItem={true}>
+              {langItems}
+            </Dropdown>
           </ul>
         </nav>
-
-        <!-- language dropdown -->
-        <div class="relative" id="language-dropdown">
-          <button id="language-toggle" class="flex items-center gap-2 text-gray-600 hover:text-black transition">
-            <Icon name={lang === "ko" ? "circle-flags:kr" : "circle-flags:us"} class="w-5 h-5" />
-            <span class="text-sm">{lang === "ko" ? "한국어" : "English"}</span>
-            <Icon name="mdi:chevron-down" class="w-4 h-4" />
-          </button>
-          <div
-            id="language-menu"
-            class="hidden absolute right-0 mt-2 bg-white border rounded shadow text-sm text-slate-600 z-50"
-          >
-            <a href="/" class="block px-4 py-2 hover:bg-slate-100 flex items-center gap-2">
-              <Icon name="circle-flags:us" class="w-4 h-4" /> English
-            </a>
-            <a href="/ko" class="block px-4 py-2 hover:bg-slate-100 flex items-center gap-2">
-              <Icon name="circle-flags:kr" class="w-4 h-4" /> 한국어
-            </a>
-          </div>
-        </div>
       </div>
 
-      <!-- mobile: language + hamburger -->
-      <MenuToggle lang={lang}>
+      <!-- Mobile: language + menu button -->
+      <div class="flex items-center gap-3 lg:hidden">
+        <!-- language button -->
+        <a
+          href={lang === "ko" ? "/" : "/ko"}
+          aria-label="language switch"
+          class="text-gray-600 hover:text-black transition"
+        >
+          <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
+        </a>
+
+        <!-- menu toggle button -->
+        <button
+          id="mobile-toggle"
+          class="text-gray-800"
+          aria-label="Toggle Menu"
+        >
+          <Icon name="mdi:menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <nav id="mobile-menu" class="hidden lg:hidden mt-4">
+      <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium">
         {menuitems.map((item) => (
           <li>
-            <a
-              href={item.path}
-              class="flex items-center gap-2 hover:text-black transition whitespace-nowrap"
-            >
+            <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition">
               <Icon name={item.icon} class="w-5 h-5" />
               <span>{item.title}</span>
             </a>
           </li>
         ))}
-      </MenuToggle>
+      </ul>
+    </nav>
   </header>
 </Container>
 
-<!-- script -->
-<script is:script client:load>
-  document.addEventListener('DOMContentLoaded', () => {
-    // mobile menu toggle
-    const toggle = document.getElementById('mobile-toggle');
-    const menu = document.getElementById('mobile-menu');
-    toggle?.addEventListener('click', () => {
-      menu?.classList.toggle('hidden');
-    });
+<!-- ✅ script -->
+<script is:script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("mobile-toggle");
+    const menu = document.getElementById("mobile-menu");
 
-    // Desktop Language drop-down toggle
-    const langToggle = document.getElementById('language-toggle');
-    const langMenu = document.getElementById('language-menu');
-    const langWrapper = document.getElementById('language-dropdown');
-
-    let langOpen = false;
-
-    const closeDropdown = (e) => {
-      if (!langWrapper.contains(e.target)) {
-        langMenu?.classList.add('hidden');
-        langOpen = false;
-      }
-    };
-
-    langToggle?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langOpen = !langOpen;
-      langMenu?.classList.toggle('hidden');
-    });
-
-    // Close when External Click
-    document.addEventListener('click', closeDropdown);
-
-    // Mobile language button (direct link)
-    const mobileLangBtn = document.getElementById('mobile-language');
-    mobileLangBtn?.addEventListener('click', () => {
-      window.location.href = `${window.location.pathname.startsWith('/ko') ? '/' : '/ko'}`;
-    });
+    if (toggle && menu) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    }
   });
 </script>
