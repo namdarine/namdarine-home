@@ -1,33 +1,31 @@
 ---
-// MenuToggle.astro
+// src/components/navbar/menu-toggle.astro
 import { Icon } from "astro-icon/components";
 const { lang = "en" } = Astro.props;
+
+let isOpen = false;
 ---
 
-<div class="lg:hidden flex items-center gap-3 relative">
-  <!-- Language -->
+<div class="lg:hidden relative flex items-center gap-3">
+  <!-- Language Toggle -->
   <a href={lang === "ko" ? "/" : "/ko"} class="text-sm text-gray-600 hover:text-black transition">
     <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
   </a>
 
-  <!-- Toggle Button -->
-  <button id="menu-toggle-btn" class="text-gray-800" aria-label="Toggle Menu">
+  <!-- Hamburger Button -->
+  <button
+    type="button"
+    on:click={() => isOpen = !isOpen}
+    class="text-gray-800"
+    aria-label="Toggle Menu"
+  >
     <Icon name="mdi:menu" class="w-6 h-6" />
   </button>
 
-  <!-- Slot: mobile nav content -->
-  <div id="mobile-dropdown" class="absolute top-12 left-0 w-full bg-white shadow-lg z-50 hidden">
-    <slot />
+  <!-- Dropdown Menu -->
+  <div class={`absolute top-12 right-0 bg-white shadow-lg z-50 p-4 rounded-md w-48 ${isOpen ? "" : "hidden"}`}>
+    <ul class="flex flex-col gap-4 text-slate-600 text-base font-medium">
+      <slot />
+    </ul>
   </div>
 </div>
-
-<script is:script client:load>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById("menu-toggle-btn");
-    const dropdown = document.getElementById("mobile-dropdown");
-
-    toggleBtn?.addEventListener("click", () => {
-      dropdown?.classList.toggle("hidden");
-    });
-  });
-</script>

@@ -79,16 +79,17 @@ const menuitems = [
 
       <!-- mobile: language + hamburger -->
       <MenuToggle lang={lang}>
-        <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium p-4">
-          {menuitems.map((item) => (
-            <li>
-              <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition">
-                <Icon name={item.icon} class="w-5 h-5" />
-                <span>{item.title}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        {menuitems.map((item) => (
+          <li>
+            <a
+              href={item.path}
+              class="flex items-center gap-2 hover:text-black transition whitespace-nowrap"
+            >
+              <Icon name={item.icon} class="w-5 h-5" />
+              <span>{item.title}</span>
+            </a>
+          </li>
+        ))}
       </MenuToggle>
 
     <!-- mobile menu -->
