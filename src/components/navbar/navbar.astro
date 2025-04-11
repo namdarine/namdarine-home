@@ -78,13 +78,18 @@ const menuitems = [
       </div>
 
       <!-- mobile: language + hamburger -->
-      <div class="flex gap-3 lg:hidden">
-        <button id="mobile-language" aria-label="language" class="text-gray-600 hover:text-black transition">
-          <Icon name={lang === "ko" ? "circle-flags:kr" : "circle-flags:us"} class="w-6 h-6" />
-        </button>
-        <MenuToggle />
-      </div>
-    </div>
+      <MenuToggle lang={lang}>
+        <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium p-4">
+          {menuitems.map((item) => (
+            <li>
+              <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition">
+                <Icon name={item.icon} class="w-5 h-5" />
+                <span>{item.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </MenuToggle>
 
     <!-- mobile menu -->
     <nav id="mobile-menu" class="hidden lg:hidden mt-4">

@@ -1,27 +1,33 @@
 ---
+// MenuToggle.astro
 import { Icon } from "astro-icon/components";
 const { lang = "en" } = Astro.props;
-
-let isOpen = false;
 ---
 
-<div class="lg:hidden flex items-center gap-3">
+<div class="lg:hidden flex items-center gap-3 relative">
   <!-- Language -->
   <a href={lang === "ko" ? "/" : "/ko"} class="text-sm text-gray-600 hover:text-black transition">
     <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
   </a>
 
   <!-- Toggle Button -->
-  <button
-    type="button"
-    on:click={() => isOpen = !isOpen}
-    class="text-gray-800"
-    aria-label="Toggle Menu"
-  >
+  <button id="menu-toggle-btn" class="text-gray-800" aria-label="Toggle Menu">
     <Icon name="mdi:menu" class="w-6 h-6" />
   </button>
 
-  <div class={`absolute top-16 left-0 w-full bg-white shadow-lg z-50 ${isOpen ? "" : "hidden"}`}>
+  <!-- Slot: mobile nav content -->
+  <div id="mobile-dropdown" class="absolute top-12 left-0 w-full bg-white shadow-lg z-50 hidden">
     <slot />
   </div>
 </div>
+
+<script is:script client:load>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("menu-toggle-btn");
+    const dropdown = document.getElementById("mobile-dropdown");
+
+    toggleBtn?.addEventListener("click", () => {
+      dropdown?.classList.toggle("hidden");
+    });
+  });
+</script>
