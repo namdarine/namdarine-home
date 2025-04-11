@@ -4,7 +4,7 @@ import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import { getCollection } from "astro:content";
 
-const { lang = "en" } = Astro.props;
+const { lang = "ko" } = Astro.props;
 const templates = await getCollection("ko/templates");
 
 const getStatusLabel = (status) => {
