@@ -2,6 +2,8 @@
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define your collection(s)
+
+// blog
 const blogCollection = defineCollection({
   schema: z.object({
     draft: z.boolean(),
@@ -18,6 +20,7 @@ const blogCollection = defineCollection({
   }),
 });
 
+// team
 const teamCollection = defineCollection({
   schema: z.object({
     draft: z.boolean(),
@@ -31,9 +34,21 @@ const teamCollection = defineCollection({
   }),
 });
 
-// 3. Export a single `collections` object to register your collection(s)
-//    This key should match your collection directory name in "src/content"
+// templates (shared schema for both en/ko)
+const templateSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  category: z.string().optional(),
+  status: z.enum(["standard", "pro", "beta"]).optional(),
+  comingSoon: z.boolean().optional(),
+  thumbnail: z.string(),
+  publishDate: z.string(),
+});
+
+// 3. Export all collections
 export const collections = {
-  'blog': blogCollection,
-  'team': teamCollection,
+  blog: blogCollection,
+  team: teamCollection,
+  templates: defineCollection({ schema: templateSchema }),
+  "ko/templates": defineCollection({ schema: templateSchema }),
 };
