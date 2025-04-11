@@ -24,6 +24,10 @@ const makeTitle = title
   ? title + " | " + "namdarine"
   : "namdarine - Build your own AI, no code needed";
 ---
+<Navbar lang={lang} />
+<script is:inline>
+  console.log("✅ Layout lang at runtime:", "{lang}");
+</script>
 
 <!doctype html>
 <html lang={lang}>
