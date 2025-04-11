@@ -5,10 +5,10 @@ import Sectionhead from "@/components/sectionhead.astro";
 import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
-const templates = await getCollection(lang === "ko" ? "pages/ko/templates" : "templates");
+const templates = await getCollection(lang === "ko" ? "ko/templates" : "templates");
 ---
 
-<Layout title={lang === "ko" ? "템플릿" : "Templates">
+<Layout title={lang === "ko" ? "템플릿" : "Templates"}>
   <Container>
     <Sectionhead>
       <div slot="title">{lang === "ko" ? "템플릿" : "Templates"}</div>
