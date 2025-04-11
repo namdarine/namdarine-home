@@ -7,7 +7,7 @@ export async function getStaticPaths() {
   const templates = await getCollection("ko/templates");
   
   return templates.map((entry) => ({
-    params: { slug: entry.slug) },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
