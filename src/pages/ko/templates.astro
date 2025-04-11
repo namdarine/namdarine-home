@@ -9,23 +9,20 @@ const templates = await getCollection("ko/templates");
 
 const getStatusLabel = (status) => {
   const labels = {
-    standard: lang === "ko" ? "Standard" : "Standard",
-    pro: lang === "ko" ? "Pro" : "Pro",
-    beta: lang === "ko" ? "Beta" : "Beta"
+    standard : "Standard",
+    pro: "Pro",
+    beta: "Beta"
   };
   return labels[status] || "";
 };
 ---
 
-<Layout title={lang === "ko" ? "템플릿" : "Templates"}>
+<Layout title= 템플릿>
   <Container>
     <Sectionhead>
-      <div slot="title">{lang === "ko" ? "템플릿" : "Templates"}</div>
+      <div slot="title">템플릿</div>
       <div slot="desc">
-        {lang === "ko"
-          ? "코딩 없이 클릭만으로 시작하는 AI 템플릿입니다."
-          : "Build your own AI — with ready-to-use templates, no code needed."
-        }
+        코딩 없이 클릭만으로 시작하는 AI 템플릿입니다.
       </div>
     </Sectionhead>
 
@@ -47,7 +44,7 @@ const getStatusLabel = (status) => {
             <div class="absolute bottom-4 right-4 flex gap-2">
               {template.data.comingSoon?.toString() === "true" && (
                 <span class="bg-yellow-100 text-yellow-800 text-[10px] font-medium px-2 py-0.5 rounded-full">
-                  {lang === "ko" ? "출시 예정" : "Coming Soon"}
+                  출시 예정
                 </span>
               )}
               <!-- Status -->
@@ -70,12 +67,10 @@ const getStatusLabel = (status) => {
             {template.data.title}
           </h3>
           <p class="mt-2 text-sm text-slate-600 leading-relaxed">
-            {template.data.description || (lang === "ko"
-              ? "클릭만으로 만드는, 코드 없이 만드는 namdarine의 AI 템플릿입니다."
-              : "A no-code AI template from Namdarine, ready to use and customize.")}
+            {template.data.description || 클릭만으로 만드는, 코드 없이 만드는 namdarine의 AI 템플릿입니다.}
           </p>
           <div class="mt-4 text-indigo-600 text-sm font-medium group-hover:underline">
-            {lang === "ko" ? "템플릿 보기 →" : "View Template →"}
+            템플릿 보기 →
           </div>
         </a>
       ))}
