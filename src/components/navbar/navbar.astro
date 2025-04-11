@@ -93,15 +93,12 @@ const langItems = [
       </div>
 
       <!-- Mobile menu -->
-      <nav id="mobile-menu" class="hidden lg:hidden w-full absolute top-full left-0 z-50 bg-white shadow-md rounded-md mt-2">
-        <ul class="flex flex-col text-base text-slate-600 font-medium w-full p-4 space-y-4">
+      <nav id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white shadow-md mt-2 z-50 rounded-md">
+        <ul class="flex flex-col space-y-4 p-4 text-base text-slate-600 font-medium">
           {menuitems.map((item) => (
             <li>
-              <a
-                href={item.path}
-                class="flex items-center gap-3 hover:text-black transition w-full"
-              >
-                <Icon name={item.icon} class="w-5 h-5 shrink-0" />
+              <a href={item.path} class="flex items-center gap-3 hover:text-black transition">
+                <Icon name={item.icon} class="w-5 h-5" />
                 <span>{item.title}</span>
               </a>
             </li>
