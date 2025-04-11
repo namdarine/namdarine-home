@@ -1,0 +1,97 @@
+---
+import { Picture } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import profilePic from "@/assets/profile_pic.png";
+---
+
+<Layout title="소개">
+  <Container>
+    <!-- Top Subject Section -->
+    <Sectionhead>
+      <Fragment slot="title">namdarine 소개</Fragment>
+      <Fragment slot="desc">namdarine은 누구나 AI를 만들 수 있도록 시작된 이름입니다. <br />
+        조립하듯 만들고, 흐름처럼 자연스럽게. <br />
+        AI는 모두의 것이어야 하니까요.</Fragment>
+    </Sectionhead>
+
+    <!-- Profile picture -->
+    <div class="mx-auto mt-12 w-40 h-40">
+      <Picture
+        src={profilePic}
+        alt="Namdarine Creator Avatar"
+        widths={[160, 320]}
+        sizes="(max-width: 640px) 100vw, 160px"
+        class="rounded-full mx-auto shadow-md object-cover"
+      />
+    </div>
+
+    <!-- Brand Philosophy section -->
+    <div class="flex flex-col gap-5 mx-auto max-w-3xl mt-12 text-center">
+      <h2 class="font-bold text-3xl text-slate-800">
+        AI는 누구나 조립하듯 만들 수 있어야 합니다. <br />
+        우리는 믿습니다 &mdash; AI를 만든다는 일은 레고처럼 직관적이어야 한다고요. <br />
+        namdarine은 그 당연한 믿음에서 시작됐습니다.
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        우리는 기술보다 사람을 먼저 생각합니다. <br />
+        AI는 이해하기 쉬워야 하고, 만들기 쉬워야 합니다. <br />
+        AI는 이제 더 많은 사람들의 손끝으로 갑니다.
+      </p>
+      <p class="text-base text-slate-500 italic">
+        namdarine은 한 사람의 이름에서 시작된 이야기입니다. <br />
+        혼자의 여정이었고, 실험이었고, 꿈이었습니다. <br />
+        지금은 누구나 자신만의 AI를 만들 수 있게 돕는 도구가 되었죠. <br />
+        그 어떤 코드도 없이, 오직 직관으로요.
+      </p>
+
+      <!-- Mini Whitepaper CTA -->
+      <div class="mt-8">
+        <a
+          href="#"
+          class="inline-block bg-slate-800 text-white px-6 py-3 rounded-lg text-sm font-semibold opacity-50 pointer-events-none"
+        >
+          철학을 글로 담았습니다 (곧 공개)
+        </a>
+      </div>
+    </div>
+
+    <!-- Founder Note section -->
+    <div class="mt-16 text-left max-w-3xl mx-auto">
+      <h3 class="text-lg font-bold text-slate-800 mb-2">한 사람의 시작이, 모두의 도구가 되기까지</h3>
+      <p class="text-slate-600 leading-relaxed text-md">
+        처음부터 인공지능을 전공했던 건 아니었습니다. <br />
+        다만 기술이 미래를 어떻게 바꿔나갈 수 있을지 탐색하던 중, <br />
+        인공지능은 단순한 기술이 아니었습니다. <br />
+        만드는 사람과 쓰는 사람 사이에 생겨나는 보이지 않는 벽 &mdash; <br />
+        그 벽을 허물 수 있는 새로운 계기처럼 느껴졌습니다.
+        <br /><br />
+        결국 전공을 인공지능으로 바꾸게 되었고, <br />
+        복잡한 알고리즘을 쓰는 것보다 <br />
+        <strong>사람의 감각에 닿고, 사람을 위한 흐름을 설계하는 것</strong>이 더 중요하다고 느꼈습니다. <br />
+        그리고 그 과정에서 한 가지를 확실히 보게 되었죠 &mdash; <br />
+        <strong>대부분의 사람들은, 코드를 쓸 수 없다는 이유만으로 인공지능에서 소외되고 있다는 사실을.</strong>
+        <br /><br />
+        그래서 namdarine을 시작했습니다. <br />
+        누구든지 만들 수 있는 인공지능을 위해. <br />
+        기술 문턱도, 시작의 부담도 없는 세상을 위해. <br />
+        그저 배우고, 실험하고, 조립하는 일 &mdash; <br />
+        그것이 인공지능이 되는 시대를 꿈꾸며.
+        <br /><br />
+        namdarine은 제 개인적인 비전이자, 더 포용적인 미래를 향한 제안입니다. <br />
+        인공지능은 개발자만의 것이 아니라, <br />
+        <strong>꿈꾸는 사람, 생각하는 사람, 만드는 모든 사람의 것이 되어야 한다고 믿습니다.</strong>
+        <br /><br />
+        <strong class="text-slate-700">namdarine은 하나의 제품이 아닙니다. <br />
+            namdarine은 믿음입니다 &mdash; <br />
+            <span class="block mt-1">사람으로부터 시작되어, 사람의 손으로 만들어지고,</span>
+            <span class="block">사람을 향해 흐르는 인공지능을 위한 믿음입니다.</span>
+        </strong>
+        <span class="block mt-4 text-right text-sm text-slate-500 italic">
+            - namdarine 창립자
+        </span>
+      </p>
+    </div>
+  </Container>
+</Layout>
