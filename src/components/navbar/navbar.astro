@@ -94,7 +94,7 @@ const langItems = [
     </div>
 
     <!-- Mobile menu section -->
-    <nav id="mobile-menu" class="hidden lg:hidden mt-4">
+    <nav id="mobile-menu" class="hidden lg:hidden mt-4 trasition-all duration-200">
       <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium">
         {menuitems.map((item) => (
           <li>
@@ -115,8 +115,13 @@ const langItems = [
     // Mobile menu toggle
     const toggle = document.getElementById("mobile-toggle");
     const menu = document.getElementById("mobile-menu");
+
     toggle?.addEventListener("click", () => {
-      menu?.classList.toggle("hidden");
+      if (menu?.classList.contains("hidden")) {
+        menu.classList.remove("hidden")
+      } else {
+        menu.classList.add("hidden")
+      }
     });
 
     // Desktop language dropdown
