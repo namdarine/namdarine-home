@@ -1,9 +1,10 @@
 ---
 // src/components/navbar/navbar.astro
 import Container from "@/components/container.astro";
-import Dropdown from "@/components/navbar/dropdown.astro";
 import { Icon } from "astro-icon/components";
-const { lang = "en" } = Astro.props;
+
+export interface Props { lang: "en" | "ko";}
+const { lang } = Astro.props;
 
 const menuitems = [
   {
@@ -45,7 +46,7 @@ const langItems = [
       <!-- Desktop menu -->
       <div class="hidden lg:flex items-center gap-6">
         <nav>
-          <ul class="flex gap-4 text-base text-slate-600 font-medium items-center">
+          <ul class="flex gap-4 text-base text-slate-600 font-medium">
             {menuitems.map((item) => (
               <li>
                 <a href={item.path} class="flex items-center gap-2 hover:text-black transition">
@@ -54,58 +55,90 @@ const langItems = [
                 </a>
               </li>
             ))}
-            <Dropdown title={lang === "ko" ? "한국어" : "English"} lastItem={true}>
-              {langItems}
-            </Dropdown>
           </ul>
         </nav>
+
+        <!-- Desktop language dropdown -->
+        <div class="relative" id="language-dropdown">
+          <button id="language-toggle" class="flex items-center gap-2 text-gray-600 hover:text-black transition">
+            <Icon name={lang === "ko" ? "circle-flags:kr" : "circle-flags:us"} class="w-5 h-5" />
+            <span class="text-sm">{lang === "ko" ? "한국어" : "English"}</span>
+            <Icon name="mdi:chevron-down" class="w-4 h-4" />
+          </button>
+          <div
+            id="language-menu"
+            class="hidden absolute right-0 mt-2 bg-white border rounded shadow text-sm text-slate-600 z-50"
+          >
+            <a href="/" class="block px-4 py-2 hover:bg-slate-100 flex items-center gap-2">
+              <Icon name="circle-flags:us" class="w-4 h-4" /> English
+            </a>
+            <a href="/ko" class="block px-4 py-2 hover:bg-slate-100 flex items-center gap-2">
+              <Icon name="circle-flags:kr" class="w-4 h-4" /> 한국어
+            </a>
+          </div>
+        </div>
       </div>
 
-      <!-- mobile: language + hamburger -->
-      <div class="flex gap-3 lg:hidden items-center">
-        <!-- Language Switch Button (Mobile) -->
-        <button
-          id="mobile-language"
-          aria-label="Switch Language"
-          class="text-gray-600 hover:text-black transition"
-          onclick={`window.location.href = '${lang === "ko" ? "/" : "/ko"}'`}
-        >
-          <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
+      <!-- Mobile buttons -->
+      <div class="lg:hidden flex items-center gap-3">
+        <!-- Language switch button -->
+        <button id="mobile-language" class="text-gray-600 hover:text-black transition">
+          <Icon name={lang === "ko" ? "circle-flags:kr" : "circle-flags:us"} class="w-6 h-6" />
         </button>
 
-        <!-- Hamburger Button -->
+        <!-- Hamburger menu toggle -->
         <button id="mobile-toggle" class="text-gray-800" aria-label="Toggle Menu">
           <Icon name="mdi:menu" class="w-6 h-6" />
         </button>
       </div>
-
-      <!-- mobile menu -->
-      <nav id="mobile-menu" class="hidden lg:hidden mt-4">
-        <ul class="flex flex-col text-base text-slate-600 font-medium p-4 space-y-2">
-          {menuitems.map((item) => (
-            <li>
-              <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition whitespace-nowrap">
-                <Icon name={item.icon} class="w-5 h-5 shrink-0" />
-                <span>{item.title}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </div>
-  </header>
-</container>
 
-<!-- ✅ mobile toggle script -->
+    <!-- Mobile menu section -->
+    <nav id="mobile-menu" class="hidden lg:hidden mt-4">
+      <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium">
+        {menuitems.map((item) => (
+          <li>
+            <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition">
+              <Icon name={item.icon} class="w-5 h-5" />
+              <span>{item.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </header>
+</Container>
+
+<!-- client script -->
 <script is:script client:load>
   document.addEventListener("DOMContentLoaded", () => {
+    // Mobile menu toggle
     const toggle = document.getElementById("mobile-toggle");
     const menu = document.getElementById("mobile-menu");
+    toggle?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden");
+    });
 
-    if (toggle && menu) {
-      toggle.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
-    }
+    // Desktop language dropdown
+    const langToggle = document.getElementById("language-toggle");
+    const langMenu = document.getElementById("language-menu");
+    const langWrapper = document.getElementById("language-dropdown");
+
+    langToggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      langMenu?.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!langWrapper.contains(e.target)) {
+        langMenu?.classList.add("hidden");
+      }
+    });
+
+    // Mobile language switch
+    const mobileLangBtn = document.getElementById("mobile-language");
+    mobileLangBtn?.addEventListener("click", () => {
+      window.location.href = window.location.pathname.startsWith("/ko") ? "/" : "/ko";
+    });
   });
 </script>
