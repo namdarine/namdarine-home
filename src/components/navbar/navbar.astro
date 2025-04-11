@@ -91,20 +91,6 @@ const menuitems = [
           </li>
         ))}
       </MenuToggle>
-
-    <!-- mobile menu -->
-    <nav id="mobile-menu" class="hidden lg:hidden mt-4">
-      <ul class="flex flex-col text-base text-slate-600 font-medium p-4 space-y-2">
-        {menuitems.map((item) => (
-          <li>
-            <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition whitespace-nowrap">
-              <Icon name={item.icon} class="w-5 h-5 shrink-0" />
-              <span>{item.title}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   </header>
 </Container>
 
