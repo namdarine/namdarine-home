@@ -1,13 +1,8 @@
 ---
+// src/components/navbar/navbar.astro
 import Container from "@/components/container.astro";
 import { Icon } from "astro-icon/components";
-import Dropdown from "@/components/navbar/dropdown.astro";
-
-export interface Props {
-  lang: "en" | "ko";
-}
-
-const { lang } = Astro.props;
+const { lang = "en" } = Astro.props;
 
 const menuitems = [
   {
@@ -29,7 +24,7 @@ const menuitems = [
     title: lang === "ko" ? "함께 만들기" : "Let’s Talk",
     path: lang === "ko" ? "/ko/contact" : "/contact",
     icon: "ri:mail-line",
-  }
+  },
 ];
 
 const langItems = [
@@ -65,46 +60,43 @@ const langItems = [
         </nav>
       </div>
 
-      <!-- Mobile: language + menu button -->
-      <div class="flex items-center gap-3 lg:hidden">
-        <!-- language button -->
-        <a
-          href={lang === "ko" ? "/" : "/ko"}
-          aria-label="language switch"
+      <!-- mobile: language + hamburger -->
+      <div class="flex gap-3 lg:hidden items-center">
+        <!-- Language Switch Button (Mobile) -->
+        <button
+          id="mobile-language"
+          aria-label="Switch Language"
           class="text-gray-600 hover:text-black transition"
+          onclick={`window.location.href = '${lang === "ko" ? "/" : "/ko"}'`}
         >
           <Icon name={lang === "ko" ? "circle-flags:us" : "circle-flags:kr"} class="w-6 h-6" />
-        </a>
+        </button>
 
-        <!-- menu toggle button -->
-        <button
-          id="mobile-toggle"
-          class="text-gray-800"
-          aria-label="Toggle Menu"
-        >
+        <!-- Hamburger Button -->
+        <button id="mobile-toggle" class="text-gray-800" aria-label="Toggle Menu">
           <Icon name="mdi:menu" class="w-6 h-6" />
         </button>
       </div>
+
+      <!-- mobile menu -->
+      <nav id="mobile-menu" class="hidden lg:hidden mt-4">
+        <ul class="flex flex-col text-base text-slate-600 font-medium p-4 space-y-2">
+          {menuitems.map((item) => (
+            <li>
+              <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition whitespace-nowrap">
+                <Icon name={item.icon} class="w-5 h-5 shrink-0" />
+                <span>{item.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
-
-    <!-- mobile menu -->
-    <nav id="mobile-menu" class="hidden lg:hidden mt-4">
-      <ul class="flex flex-col gap-3 text-base text-slate-600 font-medium">
-        {menuitems.map((item) => (
-          <li>
-            <a href={item.path} class="flex items-center gap-2 py-2 px-2 hover:text-black transition">
-              <Icon name={item.icon} class="w-5 h-5" />
-              <span>{item.title}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
   </header>
-</Container>
+</container>
 
-<!-- ✅ script -->
-<script is:script>
+<!-- ✅ mobile toggle script -->
+<script is:script client:load>
   document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("mobile-toggle");
     const menu = document.getElementById("mobile-menu");
