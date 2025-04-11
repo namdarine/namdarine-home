@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
 const templates = await getCollection(lang === "ko" ? "ko/templates" : "templates");
+const basePath = lang === "ko" ? "/ko/templates" : "/templates";
 
 const getStatusLabel = (status) => {
   const labels = {
@@ -32,7 +33,7 @@ const getStatusLabel = (status) => {
     <section class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3 mt-12">
       {templates.map((template) => (
         <a
-          href={`/templates/${template.slug}`}
+          href={`${basePath}/${template.slug}`}
           class="group block rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md transition relative"
         >
           <!-- Category Tag -->
