@@ -1,5 +1,6 @@
 ---
 import Container from "@/components/container.astro";
+import MenuToggle from "@/components/navbar/menu-toggle.astro";
 import { Icon } from "astro-icon/components";
 
 export interface Props {
@@ -84,6 +85,7 @@ const menuitems = [
         <button id="mobile-toggle" class="text-gray-800" aria-label="Toggle Menu">
           <Icon name="mdi:menu" class="w-6 h-6" />
         </button>
+        <MenuToggle />
       </div>
     </div>
 
