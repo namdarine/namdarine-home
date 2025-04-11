@@ -50,5 +50,5 @@ export const collections = {
   blog: blogCollection,
   team: teamCollection,
   templates: defineCollection({ schema: templateSchema }),
-  "ko/templates": defineCollection({ schema: templateSchema }),
+  "pages/ko/templates": defineCollection({ schema: templateSchema }),
 };

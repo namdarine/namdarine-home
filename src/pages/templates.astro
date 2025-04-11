@@ -5,7 +5,16 @@ import Sectionhead from "@/components/sectionhead.astro";
 import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
-const templates = await getCollection(lang === "ko" ? "ko/templates" : "templates");
+const templates = await getCollection(lang === "ko" ? "pages/ko/templates" : "templates");
+
+const getStatusLabel = (status) => {
+  const labels = {
+    standard: lang === "ko" ? "Standard" : "Standard",
+    pro: lang === "ko" ? "Pro" : "Pro",
+    beta: lang === "ko" ? "Beta" : "Beta"
+  };
+  return labels[status] || "";
+};
 ---
 
 <Layout title={lang === "ko" ? "템플릿" : "Templates"}>
@@ -44,11 +53,7 @@ const templates = await getCollection(lang === "ko" ? "ko/templates" : "template
               <!-- Status -->
               {template.data.status && (
                 <span class="bg-slate-100 text-slate-700 text-[10px] font-medium px-2 py-0.5 rounded-full">
-                  {{
-                    standard: lang === "ko" ? "Standard" : "Standard",
-                    pro: lang === "ko" ? "Pro" : "Pro",
-                    beta: lang === "ko" ? "Beta" : "Beta"
-                  }}[template.data.status]
+                  {getStatusLabel(template.data.status)}
                 </span>
               )}
             </div>
