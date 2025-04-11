@@ -5,6 +5,7 @@ import Container from "@/components/container.astro";
 
 export async function getStaticPaths() {
   const templates = await getCollection("ko/templates");
+  console.log("✅ 슬러그 확인:", templates.map(t => t.slug));
   return templates.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
