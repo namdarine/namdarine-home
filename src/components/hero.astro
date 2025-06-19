@@ -31,10 +31,24 @@ const { lang = "en" } = Astro.props;
         }
       />
       <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-        <Link href="#" class="flex gap-2 items-center justify-center pointer-events-none opacity-50 text-sm sm:text-base">
+        {lang === "ko" ? (
+          <Link href="#" class="flex gap-2 items-center justify-center pointer-events-none opacity-50 text-sm sm:text-base">
           <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
-          {lang === "ko" ? "곧 만나요" : "Coming Soon"}
+          곧 만나요
         </Link>
+        ) : (
+          <a
+            href="/(eng)white_paper.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex gap-2 items-center justify-center text-sm sm:text-base"
+            style="text-decoration: none;"
+          >
+            <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
+            Read Our Philosophy
+          </a>
+        )}
+        
         <Link href={lang === "ko" ? "/content/ko/about" : "/about"} size="lg" style="outline" class="flex gap-2 items-center justify-center text-sm sm:text-base">
           <Icon class="text-black w-4 h-4" name="bx:bx-book-heart" />
           {lang === "ko" ? "namdarine이 지향하는 길" : "The Path namdarine Believes In"}

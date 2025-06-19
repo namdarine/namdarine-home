@@ -18,12 +18,22 @@ const { lang = "en" } = Astro.props;
     <Link href={lang === "ko" ? "/ko/templates" : "/templates"} style="inverted">
       {lang === "ko" ? "AI 만들기 시작하기" : "Start Building AI"}
     </Link>
-    <a
-      href="#"
-      class="inline-block bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold opacity-50 pointer-events-none"
-    >
-      {lang === "ko" ? "철학을 글로 담았습니다. (곧 공개)" : "Our Philosophy, in Writing (Coming Soon)"}
-    </a>
+
+    {lang === "ko" ? (
+      <Link href="#" style="inverted" class="pointer-events-none opacity-50">
+        철학을 글로 담았습니다. (곧 공개)
+      </Link>
+    ) : (
+      <Link
+        href="/(eng)white_paper.pdf"
+        style="inverted"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Our Philosophy
+      </Link>
+    )}
+
     <Link href={lang === "ko" ? "/ko/about" : "/about"} style="outline">
       {lang === "ko" ? "브랜드의 결, 지금 읽기" : "Read the Brand Grain"}
     </Link>
