@@ -15,7 +15,7 @@ const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
       : "Snap the blocks together and follow the grain. We've smoothed out the complexity for you."}
   </p>
   <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
-    <Link href={lang === "ko" ? "/ko/templates" : "/templates"} style="inverted">
+    <Link href={lang === "ko" ? "/ko/templates" : "/en/templates"} style="inverted">
       {lang === "ko" ? "AI 만들기 시작하기" : "Start Building AI"}
     </Link>
 
@@ -34,7 +34,7 @@ const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
       </Link>
     )}
 
-    <Link href={lang === "ko" ? "/ko/about" : "/about"} style="outline">
+    <Link href={lang === "ko" ? "/ko/about" : "/en/about"} style="outline">
       {lang === "ko" ? "브랜드의 결, 지금 읽기" : "Read the Brand Grain"}
     </Link>
   </div>
