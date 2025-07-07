@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-const { lang = "en" } = Astro.props;
+const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
 ---
 
 <footer class="my-20 px-4 text-center text-sm text-slate-500 space-y-4">
