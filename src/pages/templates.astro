@@ -5,8 +5,8 @@ import Sectionhead from "@/components/sectionhead.astro";
 import { getCollection } from "astro:content";
 
 const { lang = "en" } = Astro.props;
-const templates = await getCollection(lang === "ko" ? "ko/templates" : "templates");
-const basePath = lang === "ko" ? "/ko/templates" : "/templates";
+const templates = await getCollection(lang === "ko" ? "ko/templates" : "en/templates");
+const basePath = lang === "ko" ? "/ko/templates" : "/en/templates";
 
 const getStatusLabel = (status) => {
   const labels = {

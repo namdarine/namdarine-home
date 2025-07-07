@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 
 export async function getStaticPaths() {
-  const templates = await getCollection("templates");
+  const templates = await getCollection("en/templates");
   return templates.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
