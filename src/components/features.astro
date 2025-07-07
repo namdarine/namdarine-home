@@ -2,7 +2,7 @@
 // @ts-ignore
 import { Icon } from "astro-icon/components";
 
-const { lang = "en" } = Astro.props;
+const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
 
 const features = [
   {

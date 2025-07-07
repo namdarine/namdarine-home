@@ -6,7 +6,7 @@ import Link from "@/components/ui/link.astro";
 import Cta from "@/components/cta.astro";
 import { Icon } from "astro-icon/components";
 
-const { lang = "en" } = Astro.props;
+const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
 ---
 
 <main class="pt-12 sm:pt-16 pb-16 sm:pb-24 space-y-16 sm:space-y-24">

@@ -1,7 +1,7 @@
 ---
 import Link from "./ui/link.astro";
 
-const { lang = "en" } = Astro.props;
+const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
 ---
 
 <section class="bg-black p-10 mt-24 text-center text-white rounded-lg max-w-4xl mx-auto">
