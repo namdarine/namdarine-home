@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+const { lang = "en" } = Astro.props;
 ---
 
 <footer class="my-20 px-4 text-center text-sm text-slate-500 space-y-4">
@@ -29,5 +30,29 @@ import { Icon } from "astro-icon/components";
       <Icon name="ri:medium-fill" class="w-5 h-5" />
       <span>Medium</span>
     </a>
+    
+    {lang === 'ko' ? (
+      <>
+        <a href="/ko/terms" class="flex items-center space-x-2 hover:text-black transition">
+          <Icon name="material-symbols:description" class="w-5 h-5" />
+          <span>이용약관</span>
+        </a>
+        <a href="/ko/privacy" class="flex items-center space-x-2 hover:text-black transition">
+          <Icon name="mdi:shield-lock-outline" class="w-5 h-5" />
+          <span>개인정보처리방침</span>
+        </a>
+      </>
+    ) : (
+      <>
+        <a href="/terms" class="flex items-center space-x-2 hover:text-black transition">
+          <Icon name="material-symbols:description" class="w-5 h-5" />
+          <span>Terms</span>
+        </a>
+        <a href="/privacy" class="flex items-center space-x-2 hover:text-black transition">
+          <Icon name="mdi:shield-lock-outline" class="w-5 h-5" />
+          <span>Privacy</span>
+        </a>
+      </>
+    )}
   </div>
 </footer>
