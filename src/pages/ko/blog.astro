@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("blog", ({ data, slug }) => {
+  return slug.startsWith("ko/") && !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+---
+
+<Layout title="블로그">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">inside namdarine</Fragment>
+      <Fragment slot="desc">
+        배움은 도구가 되고, 도구는 이야기가 됩니다. <br />
+        배우고, 만들고, 나누는 모든 여정의 기록.
+      </Fragment>
+    </Sectionhead>
+    
+    <main class="mt-16 px-4 sm:px-6">
+    <section class="grid gap-16 max-w-4xl mx-auto">
+      {
+        publishedBlogEntries.map((blogPostEntry, index) => (
+          <article>
+            <a href={`/blog/${blogPostEntry.slug}`}>
+              <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                <Picture
+                  src={blogPostEntry.data.image.src}
+                  alt={blogPostEntry.data.image.alt}
+                  sizes="(max-width: 800px) 100vw, 800px"
+                  width={800}
+                  height={600}
+                  loading={index <= 2 ? "eager" : "lazy"}
+                  decoding={index <= 2 ? "sync" : "async"}
+                  class="w-full rounded-xl object-cover object-center shadow-sm"
+                />
+                <div>
+                  <span class="text-indigo-600 uppercase tracking-wider text-xs font-semibold">
+                    {blogPostEntry.data.category}
+                  </span>
+
+                  <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-2">
+                    {blogPostEntry.data.title}
+                  </h2>
+
+                  <div class="flex gap-2 mt-3 text-sm text-gray-500">
+                    <span>{blogPostEntry.data.author}</span>
+                    <span>•</span>
+                    <time datetime={blogPostEntry.data.publishDate.toISOString()}>
+                      {blogPostEntry.data.publishDate.toDateString()}
+                    </time>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+  </Container>
+</Layout>
