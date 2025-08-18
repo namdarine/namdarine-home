@@ -5,42 +5,26 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 
-const pathname = Astro.url.pathname;
-const lang = pathname.startsWith("/ko") ? "ko" : "en";
-
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
 // Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+publishedBlogEntries.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-const TEXT = {
-  ko: {
-    title: "inside namdarine",
-    desc: "배움은 도구가 되고, 도구는 이야기가 됩니다. \n배우고, 만들고, 나누는 모든 여정의 기록.",
-    by: "작성자",
-  },
-  en: {
-    title: "inside namdarine",
-    desc: "Lessons I learn. Tools I build. Ideas I share. \nWhere thoughts becom tools, and tools tell stories.",
-    by: "Author",
-  },
-};
 ---
 
 <Layout title="Blog">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">{TEXT[lang].title}</Fragment>
+      <Fragment slot="title">inside namdarine</Fragment>
       <Fragment slot="desc">
-        {TEXT[lang].desc.split("\n").map(line => <><span>{line}</span><br /></>)}
+        Lessons I learn. Tools I build. Ideas I share. <br />
+        Where thoughts becom tools, and tools tell stories.
       </Fragment>
     </Sectionhead>
-    
+
     <main class="mt-16 px-4 sm:px-6">
     <section class="grid gap-16 max-w-4xl mx-auto">
       {

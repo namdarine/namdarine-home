@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import { getCollection } from "astro:content";
+import Navbar from "@/components/navbar/navbar.astro";
 
 const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
 const templates = await getCollection("ko/templates");
@@ -16,7 +17,7 @@ const getStatusLabel = (status) => {
   return labels[status] || "";
 };
 ---
-
+<Navbar lang="ko" />
 <Layout title= 템플릿>
   <Container>
     <Sectionhead>
