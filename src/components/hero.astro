@@ -33,28 +33,24 @@ const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
       <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
         {lang === "ko" ? (
           <a
-            href="/(kor)white_paper_v08.25.pdf"
-            size="lg"
-            style="outline"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex gap-2 items-center justify-center text-sm sm:text-base"
-            style="text-decoration: none;"
+          href="/(kor)white_paper_v08.25.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex gap-2 items-center justify-center text-sm sm:text-base border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
+          style="text-decoration: none;"
           >
-            <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
+          <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
             namdarine 철학 읽기
           </a>
         ) : (
           <a
             href="/(eng)white_paper_v08.25.pdf"
-            size="lg"
-            style="outline"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex gap-2 items-center justify-center text-sm sm:text-base"
+            class="flex gap-2 items-center justify-center text-sm sm:text-base border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
             style="text-decoration: none;"
           >
-            <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
+          <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
             Read Our Philosophy
           </a>
         )}
