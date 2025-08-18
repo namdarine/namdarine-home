@@ -1,0 +1,47 @@
+---
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="Contact" lang="ko">
+  <!-- Calendly link widget begin -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- Calendly link widget end -->
+
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Contact</Fragment>
+      <Fragment slot="desc">조립은 혼자보다 함께할 때 더 단단해집니다. <br />
+        함께 나누고 싶은 이야기가 있다면, 주저 말고 들려주세요.</Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+      <div>
+        <h2 class="font-medium text-2xl text-gray-800">Reach out to Namdarine</h2>
+        <p class="text-lg leading-relaxed text-slate-500 mt-3">
+            템플릿 이야기부터 새로운 아이디어, 협업 제안, 혹은 그냥 안부 인사까지 — 언제든 환영입니다.
+        </p>
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" />
+            <a href="mailto:namdarine@gmail.com" class="hover:underline">namdarine@gmail.com</a>
+          </div>
+          
+          <div class="flex items-center space-x-2 text-gray-600">
+            <Icon class="text-gray-400 w-4 h-4" name="ri:medium-fill" />
+            <a href="https://medium.com/@namdarine" class="hover:underline">Read on Medium</a>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- Temporary disabled: Web3Forms not in use --> 
+      <!-- <div>
+        <Contactform />
+      </div> -->
+    </div>
+  </Container>
+</Layout>
