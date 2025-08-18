@@ -15,7 +15,7 @@ const publishedBlogEntries = await getCollection("blog", ({ data, slug }) => {
 publishedBlogEntries.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 ---
-<Layout title="블로그">
+<Layout title="블로그" lang="ko">
   <Container>
     <Sectionhead>
       <Fragment slot="title">inside namdarine</Fragment>
