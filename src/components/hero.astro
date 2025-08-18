@@ -32,18 +32,21 @@ const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
       />
       <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
         {lang === "ko" ? (
-          <Link
-            href="#"
+          <a
+            href="/(kor)white_paper_v08.25.pdf"
             size="lg"
             style="outline"
-            class="flex gap-2 items-center justify-center pointer-events-none opacity-50 text-sm sm:text-base"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex gap-2 items-center justify-center text-sm sm:text-base"
+            style="text-decoration: none;"
           >
-          <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
-          곧 만나요
-        </Link>
+            <Icon class="text-white w-5 h-5" name="bx:bx-grid-alt" />
+            namdarine 철학 읽기
+          </a>
         ) : (
           <a
-            href="/white_paper.pdf"
+            href="/(eng)white_paper_v08.25.pdf"
             size="lg"
             style="outline"
             target="_blank"

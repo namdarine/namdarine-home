@@ -20,12 +20,17 @@ const lang = Astro.url.pathname.startsWith('/ko') ? 'ko' : 'en';
     </Link>
 
     {lang === "ko" ? (
-      <Link href="#" style="inverted" class="pointer-events-none opacity-50">
-        철학을 글로 담았습니다. (곧 공개)
+      <Link
+        href="/(kor)white_paper_v08.25.pdf"
+        style="inverted"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        철학 보러 가기
       </Link>
     ) : (
       <Link
-        href="/white_paper.pdf"
+        href="/(eng)white_paper_v08.25.pdf"
         style="inverted"
         target="_blank"
         rel="noopener noreferrer"
